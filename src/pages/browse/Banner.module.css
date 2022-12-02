@@ -1,0 +1,34 @@
+.container {
+  color: white;
+  position: relative;
+  max-height: 330px;
+}
+.img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+}
+.banner_content {
+  top: 100px;
+  left: 15px;
+  position: absolute;
+  width: 30%;
+}
+.banner_content > p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: small;
+  font-weight: 500;
+}
+.banner_content > button {
+  width: 80px;
+  height: 25px;
+  border: none;
+  border-radius: 3px;
+  background-color: rgba(34, 29, 33, 0.6);
+  color: white;
+  font-weight: 700;
+  margin-right: 10px;
+}
