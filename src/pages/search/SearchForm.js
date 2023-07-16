@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
-import classes from "./SearchForm.module.css";
-const SearchForm = (props) => {
+import classes from "./SearchForm.module.scss";
+const SearchForm = ({ inputForm }) => {
   const [enteredInput, setEnteredInput] = useState("");
-
-  const inputForm = props.inputForm;
 
   const inputChangeHandler = (event) => {
     setEnteredInput(event.target.value);

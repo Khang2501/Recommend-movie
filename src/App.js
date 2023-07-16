@@ -3,8 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Browse from "./pages/browse/Browse";
 import Search from "./pages/search/Search";
-
+import axios from "axios";
 function App() {
+  axios.defaults.baseURL = "https://api.themoviedb.org/3";
+
   const API_KEY = "30736126a260889e4fa8c79d809f759a";
   const requests = {
     fetchTrending: `/trending/all/week?api_key=${API_KEY}&language=en-US`,

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classes from "./NavBar.module.css";
+import classes from "./NavBar.module.scss";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 

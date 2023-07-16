@@ -1,11 +1,11 @@
 import React from "react";
 
-import classes from "./Banner.module.css";
+import classes from "./Banner.module.scss";
 
-const Banner = (props) => {
+const Banner = ({ dataBanner }) => {
   let random;
-  if (props.dataBanner.length !== 1) {
-    random = Math.floor(Math.random() * props.dataBanner.length - 1);
+  if (dataBanner.length !== 1) {
+    random = Math.floor(Math.random() * dataBanner.length - 1);
   } else {
     random = 0;
   }
@@ -14,18 +14,18 @@ const Banner = (props) => {
     <div className={classes.container}>
       <img
         className={classes.img}
-        src={props.dataBanner[random].backdropPath}
+        src={dataBanner[random].backdropPath}
         alt="img"
       ></img>
       <div className={classes["banner_content"]}>
         <h1>
-          {props.dataBanner[random].title === undefined
+          {dataBanner[random].title === undefined
             ? "No movie name"
-            : props.dataBanner[random].title}
+            : dataBanner[random].title}
         </h1>
         <button>Play</button>
         <button>My list</button>
-        <p>{props.dataBanner[random].overView}</p>
+        <p>{dataBanner[random].overView}</p>
       </div>
     </div>
   );

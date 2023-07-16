@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from "react";
-import classes from "./Original.module.css";
-import useAPI from "../../custom-hook/useAPI";
+import classes from "./Original.module.scss";
+import axios from "axios";
 const Original = (props) => {
   const [moviesOriginals, setMoviesOriginals] = useState([]);
-
-  const { isLoading, fetchAPI } = useAPI();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const transformTasks = (movieObj) => {
-      const loadedMovies = [];
+    axios
+      .get(props.original)
+      .then((result) => result.data)
+      .then((data) => {
+        const loadedMovies = [];
 
-      movieObj.results.map((responseAPI) => {
-        return loadedMovies.push({
-          key: responseAPI.id,
-          title: responseAPI.original_name,
-          posterPath: `https://image.tmdb.org/t/p/w500/${responseAPI.poster_path}`,
-          overView: responseAPI.overview,
-          releaseDate: responseAPI.first_air_date,
-          vote: responseAPI.vote_average,
+        data.results.map((responseAPI) => {
+          return loadedMovies.push({
+            key: responseAPI.id,
+            title: responseAPI.original_name,
+            posterPath: `https://image.tmdb.org/t/p/w500/${responseAPI.poster_path}`,
+            overView: responseAPI.overview,
+            releaseDate: responseAPI.first_air_date,
+            vote: responseAPI.vote_average,
+          });
         });
-      });
-      const loadedMovies10 = loadedMovies.slice(0, 10);
-      setMoviesOriginals(loadedMovies10);
-    };
-
-    fetchAPI(`https://api.themoviedb.org/3${props.original}`, transformTasks);
+        const loadedMovies10 = loadedMovies.slice(0, 10);
+        setMoviesOriginals(loadedMovies10);
+        setIsLoading(true);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
